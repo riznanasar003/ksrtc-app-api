@@ -94,7 +94,17 @@ app.post("/add",(req,res)=>{
     res.json({"status":"success"})
 })
 
-
+app.post("/viewbus",(req,res)=>{
+    ksrtcmodel.find().then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            res.json(error)
+        }
+    )
+})
 
 
 
