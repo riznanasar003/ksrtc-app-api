@@ -3,6 +3,7 @@ const mongoose = require ("mongoose")
 const cors = require ("cors")
 const bcrypt = require ("bcryptjs")
 const {busmodel} = require ("./models/bus")
+const {ksrtcmodel} = require ("./models/ksrtc")
 const jwt = require ("jsonwebtoken")
 
 const app = express()
@@ -84,6 +85,16 @@ app.post("/view",(req,res)=>{
         }
     })
 })
+
+
+app.post("/add",(req,res)=>{
+    let input = req.body
+    let ksrtc = new ksrtcmodel(input)
+    ksrtc.save()
+    res.json({"status":"success"})
+})
+
+
 
 app.listen(8080,()=>{
     console.log("Server Started")
